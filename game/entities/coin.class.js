@@ -17,16 +17,18 @@ export default class Coin extends Object {
 
   constructor(x, y) {
     super();
-    this.game = new Game();
+    this.game = Game.instance; // dùng đúng singleton
     this.x = x;
     this.y = y;
     this.loadImage("../assets/items/coin.png");
   }
 
   collect() {
-    if (this.isCollected) return;
+    if (this.isCollected || this.game.isPaused) return;
 
     const question = questions[Math.floor(Math.random() * questions.length)];
+
+    this.game.pause(); // 🛑 Dừng game khi câu hỏi hiện ra
 
     showQuestionPopup(question, (isCorrect) => {
       if (isCorrect) {
@@ -41,6 +43,8 @@ export default class Coin extends Object {
       } else {
         this.game.sounds.playSound("../assets/sounds/wrong.mp3", false, 0.3);
       }
+
+      this.game.resume(); // ✅ Chỉ tiếp tục sau khi người chơi đã trả lời
     });
   }
 

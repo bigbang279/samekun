@@ -24,7 +24,7 @@ function showQuestionPopup(questionObj, onResult) {
   submitBtn.onclick = () => {
     const selected = document.querySelector('input[name="choice"]:checked');
     if (!selected) {
-      alert("Hãy chọn 1 đáp án!");
+      alert("1個答えを選んでください!");
       return;
     }
 

@@ -1,0 +1,1 @@
+đã sửa được game dung lại trong 10s

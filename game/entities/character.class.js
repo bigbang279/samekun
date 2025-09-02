@@ -8,7 +8,7 @@ export default class Character extends MovableObject {
   speed = 15;
   height = 600;
   width = 589;
-  health = 1000;
+  health = 10;
 
   y = 10;
   x = 200;
@@ -476,6 +476,7 @@ export default class Character extends MovableObject {
 
   /**updatge on every frame */
   update() {
+    if (this.game.isPaused) return;
     if (!this.freeze) {
       this.updateSwim();
       this.applyPhysics();

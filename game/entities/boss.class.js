@@ -278,7 +278,27 @@ export default class Boss extends MovableObject {
 
   /**updates on every frame */
   update() {
+    if (this.game.isPaused) return;
     this.updateIntro();
     this.updateMovement();
+  }
+
+  move() {
+    if (this.game.isPaused) return;
+
+    if (
+      this.isIntroduced &&
+      !this.isTakingDmg &&
+      !this.isDead &&
+      !this.game.world.level.character.isDead
+    ) {
+      if (!this.drawReverse) {
+        this.x -= this.speed;
+      } else {
+        this.x += this.speed;
+      }
+
+      this.changeMovementDirection();
+    }
   }
 }
