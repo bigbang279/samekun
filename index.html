@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharkie</title>
+    <title>にほんごミニゲーム</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
@@ -149,7 +149,7 @@
         <div id="dead-container" class="absolute center column">
             <div class="result-content center column">
                 <span id="dead-label">You died.</span>
-                <div id="dead-restart-button" class="button center">Try again</div>
+                <div id="dead-restart-button" class="button center">再挑戦</div>
                 <img src="assets/ui-images/dead-sharkie.png" id="dead-sharkie">
             </div>
         </div>
@@ -161,7 +161,7 @@
         <div class="popup-content">
           <h3 id="question-text">Câu hỏi sẽ hiện ở đây</h3>
           <div id="choices-container"></div>
-          <button onclick="submitAnswer()">Trả lời</button>
+          <button onclick="submitAnswer()">答え</button>
         </div>
       </div>
       <script type="module" src="./game/question-popup.js"></script>

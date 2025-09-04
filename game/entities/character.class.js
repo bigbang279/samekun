@@ -8,7 +8,7 @@ export default class Character extends MovableObject {
   speed = 15;
   height = 600;
   width = 589;
-  health = 10;
+  health = 100;
 
   y = 10;
   x = 200;
@@ -150,6 +150,7 @@ export default class Character extends MovableObject {
 
   /**take dmg */
   takeDmg(amount, type) {
+    if (this.game.isPaused) return; // Dừng trừ máu khi game bị pause (ví dụ: đang hiện popup câu hỏi)
     /**die if health <= 0 */
     if (this.health - amount <= 0) {
       this.die();

@@ -2,6 +2,18 @@ import Object from "../object.class.js";
 import Game from "../game.class.js";
 import { questions } from "../utils/question.js";
 
+let availableQuestions = [];
+
+function getRandomQuestion() {
+  if (availableQuestions.length === 0) {
+    availableQuestions = [...questions];
+  }
+  const idx = Math.floor(Math.random() * availableQuestions.length);
+  const q = availableQuestions[idx];
+  availableQuestions.splice(idx, 1);
+  return q;
+}
+
 export default class Coin extends Object {
   name = "coin";
   height = 90;
@@ -26,7 +38,7 @@ export default class Coin extends Object {
   collect() {
     if (this.isCollected || this.game.isPaused) return;
 
-    const question = questions[Math.floor(Math.random() * questions.length)];
+    const question = getRandomQuestion();
 
     this.game.pause(); // 🛑 Dừng game khi câu hỏi hiện ra
 
@@ -41,6 +53,7 @@ export default class Coin extends Object {
           0.3
         );
       } else {
+        this.game.world.level.character.takeDmg(10, 'question'); // Trả lời sai bị trừ 10 máu
         this.game.sounds.playSound("../assets/sounds/wrong.mp3", false, 0.3);
       }
 
